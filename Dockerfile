@@ -24,5 +24,6 @@ WORKDIR /
 VOLUME ["/data"]
 VOLUME ["/conf"]
 EXPOSE 80
+EXPOSE 6800
 
 CMD ["/conf-copy/start.sh"]

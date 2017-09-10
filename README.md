@@ -11,6 +11,7 @@ I. replace **/DOWNLOAD_DIR** and **/CONFIG_DIR** for save data, and **YOUR_SECRE
 ```
 sudo docker run -d \
 --name unraid-aria2-with-webui \
+-p 6800:6800 \
 -p 6880:80 \
 -v /DOWNLOAD_DIR:/data \
 -v /CONFIG_DIR:/conf \
