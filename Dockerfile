@@ -23,8 +23,6 @@ RUN chmod +x /conf-copy/start.sh
 WORKDIR /
 VOLUME ["/data"]
 VOLUME ["/conf"]
-EXPOSE 6800
 EXPOSE 80
-EXPOSE 8080
 
 CMD ["/conf-copy/start.sh"]
