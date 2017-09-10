@@ -13,9 +13,10 @@ sudo docker run -d \
 --name unraid-aria2-with-webui \
 -p 6800:6800 \
 -p 6880:80 \
--v /DOWNLOAD_DIR:/data \
 -v /CONFIG_DIR:/conf \
 -e SECRET=YOUR_SECRET_CODE \
+-v TEMP_DIR:=/download \
+-v COMPLETED_DIR:=/finished \
 fanningert/unraid-aria2-with-webui
 ```
   

@@ -21,7 +21,8 @@ ADD files/on-complete.sh /conf-copy/on-complete.sh
 RUN chmod +x /conf-copy/start.sh
 
 WORKDIR /
-VOLUME ["/data"]
+VOLUME ["/download"]
+VOLUME ["/finished"]
 VOLUME ["/conf"]
 EXPOSE 80
 EXPOSE 6800
