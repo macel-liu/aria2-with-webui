@@ -1,29 +1,29 @@
 #!/bin/sh
 if [ ! -f /conf/aria2.conf ]; then
 	cp /conf-copy/aria2.conf /conf/aria2.conf
-	if [ $SECRET ]; then
-		echo "rpc-secret=${SECRET}" >> /conf/aria2.conf
+	if [ $aria2Secret ]; then
+		echo "rpc-secret=${aria2Secret}" >> /conf/aria2.conf
 	fi
-	if [ $aria2-max-concurrent-downloads ]; then
-		echo "max-concurrent-downloads=${aria2-max-concurrent-downloads}" >> /conf/aria2.conf
+	if [ $aria2MaxConcurrentDownloads ]; then
+		echo "max-concurrent-downloads=${aria2MaxConcurrentDownloads}" >> /conf/aria2.conf
 	fi
-	if [ $aria2-seed-ratio ]; then
-		echo "seed-ratio=${aria2-seed-ratio}" >> /conf/aria2.conf
+	if [ $aria2SeedRatio ]; then
+		echo "seed-ratio=${aria2SeedRatio}" >> /conf/aria2.conf
 	fi
-	if [ $aria2-seed-time ]; then
-		echo "seed-time=${aria2-seed-time}" >> /conf/aria2.conf
+	if [ $aria2SeedTime ]; then
+		echo "seed-time=${aria2SeedTime}" >> /conf/aria2.conf
 	fi
-	if [ $aria2-disable-ipv6 ]; then
-		echo "disable-ipv6=${aria2-disable-ipv6}" >> /conf/aria2.conf
+	if [ $aria2DisableIpv6 ]; then
+		echo "disable-ipv6=${aria2DisableIpv6}" >> /conf/aria2.conf
 	fi
-	if [ $aria2-force-save ]; then
-		echo "force-save=${aria2-force-save}" >> /conf/aria2.conf
+	if [ $aria2ForceSave ]; then
+		echo "force-save=${aria2ForceSave}" >> /conf/aria2.conf
 	fi
-	if [ $aria2-max-download-limit ]; then
-		echo "max-download-limit=${aria2-max-download-limit}" >> /conf/aria2.conf
+	if [ $aria2MaxDownloadLimit ]; then
+		echo "max-download-limit=${aria2MaxDownloadLimit}" >> /conf/aria2.conf
 	fi
-	if [ $aria2-max-overall-download-limit ]; then
-		echo "max-overall-download-limit=${aria2-max-overall-download-limit}" >> /conf/aria2.conf
+	if [ $aria2MaxOverallDownloadLimit ]; then
+		echo "max-overall-download-limit=${aria2MaxOverallDownloadLimit}" >> /conf/aria2.conf
 	fi
 fi
 if [ ! -f /conf/on-complete.sh ]; then
