@@ -25,6 +25,18 @@ if [ ! -f /conf/aria2.conf ]; then
 	if [ $aria2MaxOverallDownloadLimit ]; then
 		echo "max-overall-download-limit=${aria2MaxOverallDownloadLimit}" >> /conf/aria2.conf
 	fi
+	if [ $aria2Continue ]; then
+		echo "continue=${aria2Continue}" >> /conf/aria2.conf
+	fi
+	if [ $aria2MinSplitSize ]; then
+		echo "min-split-size=${aria2MinSplitSize}" >> /conf/aria2.conf
+	fi
+	if [ $aria2Split ]; then
+		echo "split=${aria2Split}" >> /conf/aria2.conf
+	fi
+	if [ $aria2MaxConnectionPerServer ]; then
+		echo "max-connection-per-server=${aria2MaxConnectionPerServer}" >> /conf/aria2.conf
+	fi
 fi
 if [ ! -f /conf/on-complete.sh ]; then
 	cp /conf-copy/on-complete.sh /conf/on-complete.sh
@@ -36,4 +48,4 @@ touch /conf/aria2.session
 cat /conf/aria2.conf
 
 darkhttpd /aria2-webui --port 80 &
-aria2c --conf-path=/conf/aria2.conf --continue
+aria2c --conf-path=/conf/aria2.conf
