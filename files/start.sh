@@ -50,6 +50,9 @@ fi
 if [ $aria2BtLoadSavedMetadata ]; then
 	echo "bt-load-saved-metadata=${aria2BtLoadSavedMetadata}" >> /conf/aria2.conf
 fi
+if [ $aria2SaveSessionInterval ]; then
+	echo "save-session-interval=${aria2SaveSessionInterval}" >> /conf/aria2.conf
+fi
 
 # Extra aria2 option file
 if [ ! -f /conf/aria2_ext.conf ]; then
