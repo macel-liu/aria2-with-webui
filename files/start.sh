@@ -38,6 +38,18 @@ fi
 if [ $aria2MaxConnectionPerServer ]; then
 	echo "max-connection-per-server=${aria2MaxConnectionPerServer}" >> /conf/aria2.conf
 fi
+if [ $aria2BtRequireCrypto ]; then
+	echo "bt-require-crypto=${aria2BtRequireCrypto}" >> /conf/aria2.conf
+fi
+if [ $aria2BtMinCryptoLevel ]; then
+	echo "bt-min-crypto-level=${aria2BtMinCryptoLevel}" >> /conf/aria2.conf
+fi
+if [ $aria2BtSaveMetadata ]; then
+	echo "bt-save-metadata=${aria2BtSaveMetadata}" >> /conf/aria2.conf
+fi
+if [ $aria2BtLoadSavedMetadata ]; then
+	echo "bt-load-saved-metadata=${aria2BtLoadSavedMetadata}" >> /conf/aria2.conf
+fi
 
 # Create hook files, if not exists
 if [ ! -f /conf/on-bt-download-complete.sh ]; then
