@@ -51,6 +51,12 @@ if [ $aria2BtLoadSavedMetadata ]; then
 	echo "bt-load-saved-metadata=${aria2BtLoadSavedMetadata}" >> /conf/aria2.conf
 fi
 
+# Extra aria2 option file
+if [ ! -f /conf/aria2_ext.conf ]; then
+	touch /conf/aria2_ext.conf
+fi
+cat /conf/aria2_ext.conf >> /conf/aria2.conf
+
 # Create hook files, if not exists
 if [ ! -f /conf/on-bt-download-complete.sh ]; then
 	cp /conf-copy/on-bt-download-complete.sh /conf/on-bt-download-complete.sh
