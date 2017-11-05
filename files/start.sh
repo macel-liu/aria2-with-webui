@@ -1,49 +1,74 @@
 #!/bin/sh
-if [ ! -f /conf/aria2.conf ]; then
-	cp /conf-copy/aria2.conf /conf/aria2.conf
-	if [ $aria2Secret ]; then
-		echo "rpc-secret=${aria2Secret}" >> /conf/aria2.conf
-	fi
-	if [ $aria2MaxConcurrentDownloads ]; then
-		echo "max-concurrent-downloads=${aria2MaxConcurrentDownloads}" >> /conf/aria2.conf
-	fi
-	if [ $aria2SeedRatio ]; then
-		echo "seed-ratio=${aria2SeedRatio}" >> /conf/aria2.conf
-	fi
-	if [ $aria2SeedTime ]; then
-		echo "seed-time=${aria2SeedTime}" >> /conf/aria2.conf
-	fi
-	if [ $aria2DisableIpv6 ]; then
-		echo "disable-ipv6=${aria2DisableIpv6}" >> /conf/aria2.conf
-	fi
-	if [ $aria2ForceSave ]; then
-		echo "force-save=${aria2ForceSave}" >> /conf/aria2.conf
-	fi
-	if [ $aria2MaxDownloadLimit ]; then
-		echo "max-download-limit=${aria2MaxDownloadLimit}" >> /conf/aria2.conf
-	fi
-	if [ $aria2MaxOverallDownloadLimit ]; then
-		echo "max-overall-download-limit=${aria2MaxOverallDownloadLimit}" >> /conf/aria2.conf
-	fi
-	if [ $aria2Continue ]; then
-		echo "continue=${aria2Continue}" >> /conf/aria2.conf
-	fi
-	if [ $aria2MinSplitSize ]; then
-		echo "min-split-size=${aria2MinSplitSize}" >> /conf/aria2.conf
-	fi
-	if [ $aria2Split ]; then
-		echo "split=${aria2Split}" >> /conf/aria2.conf
-	fi
-	if [ $aria2MaxConnectionPerServer ]; then
-		echo "max-connection-per-server=${aria2MaxConnectionPerServer}" >> /conf/aria2.conf
-	fi
+
+# Create aria2.conf
+cp -f /conf-copy/aria2.conf /conf/aria2.conf
+if [ $aria2Secret ]; then
+	echo "rpc-secret=${aria2Secret}" >> /conf/aria2.conf
 fi
-if [ ! -f /conf/on-complete.sh ]; then
-	cp /conf-copy/on-complete.sh /conf/on-complete.sh
+if [ $aria2MaxConcurrentDownloads ]; then
+	echo "max-concurrent-downloads=${aria2MaxConcurrentDownloads}" >> /conf/aria2.conf
+fi
+if [ $aria2SeedRatio ]; then
+	echo "seed-ratio=${aria2SeedRatio}" >> /conf/aria2.conf
+fi
+if [ $aria2SeedTime ]; then
+	echo "seed-time=${aria2SeedTime}" >> /conf/aria2.conf
+fi
+if [ $aria2DisableIpv6 ]; then
+	echo "disable-ipv6=${aria2DisableIpv6}" >> /conf/aria2.conf
+fi
+if [ $aria2ForceSave ]; then
+	echo "force-save=${aria2ForceSave}" >> /conf/aria2.conf
+fi
+if [ $aria2MaxDownloadLimit ]; then
+	echo "max-download-limit=${aria2MaxDownloadLimit}" >> /conf/aria2.conf
+fi
+if [ $aria2MaxOverallDownloadLimit ]; then
+	echo "max-overall-download-limit=${aria2MaxOverallDownloadLimit}" >> /conf/aria2.conf
+fi
+if [ $aria2Continue ]; then
+	echo "continue=${aria2Continue}" >> /conf/aria2.conf
+fi
+if [ $aria2MinSplitSize ]; then
+	echo "min-split-size=${aria2MinSplitSize}" >> /conf/aria2.conf
+fi
+if [ $aria2Split ]; then
+	echo "split=${aria2Split}" >> /conf/aria2.conf
+fi
+if [ $aria2MaxConnectionPerServer ]; then
+	echo "max-connection-per-server=${aria2MaxConnectionPerServer}" >> /conf/aria2.conf
 fi
 
-chmod +x /conf/on-complete.sh
-touch /conf/aria2.session
+# Create hook files, if not exists
+if [ ! -f /conf/on-bt-download-complete.sh ]; then
+	cp /conf-copy/on-bt-download-complete.sh /conf/on-bt-download-complete.sh
+fi
+if [ ! -f /conf/on-download-complete.sh ]; then
+	cp /conf-copy/on-download-complete.sh /conf/on-download-complete.sh
+fi
+if [ ! -f /conf/on-download-error.sh ]; then
+	cp /conf-copy/on-download-error.sh /conf/on-download-error.sh
+fi
+if [ ! -f /conf/on-download-pause.sh ]; then
+	cp /conf-copy/on-download-pause.sh /conf/on-download-pause.sh
+fi
+if [ ! -f /conf/on-download-start.sh ]; then
+	cp /conf-copy/on-download-start.sh /conf/on-download-start.sh
+fi
+if [ ! -f /conf/on-download-stop.sh ]; then
+	cp /conf-copy/on-download-stop.sh /conf/on-download-stop.sh
+fi
+
+chmod +x /conf/on-bt-download-complete.sh
+chmod +x /conf/on-download-complete.sh
+chmod +x /conf/on-download-error.sh
+chmod +x /conf/on-download-pause.sh
+chmod +x /conf/on-download-start.sh
+chmod +x /conf/on-download-stop.sh
+
+if [ ! -f /conf/aria2.session ]; then
+	touch /conf/aria2.session
+fi
 
 cat /conf/aria2.conf
 
