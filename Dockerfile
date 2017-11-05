@@ -16,7 +16,12 @@ RUN apk update && \
 
 ADD files/start.sh /conf-copy/start.sh
 ADD files/aria2.conf /conf-copy/aria2.conf
-ADD files/on-complete.sh /conf-copy/on-complete.sh
+ADD files/on-complete.sh /conf-copy/on-bt-download-complete.sh
+ADD files/on-complete.sh /conf-copy/on-download-complete.sh
+ADD files/on-complete.sh /conf-copy/on-download-error.sh
+ADD files/on-complete.sh /conf-copy/on-download-pause.sh
+ADD files/on-complete.sh /conf-copy/on-download-start.sh
+ADD files/on-complete.sh /conf-copy/on-download-stop.sh
 
 RUN chmod +x /conf-copy/start.sh
 
