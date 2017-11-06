@@ -53,6 +53,15 @@ fi
 if [ $aria2SaveSessionInterval ]; then
 	echo "save-session-interval=${aria2SaveSessionInterval}" >> /conf/aria2.conf
 fi
+if [ $aria2ListenPort ]; then
+	echo "listen-port=${aria2ListenPort}" >> /conf/aria2.conf
+fi
+if [ $aria2EnableDht ]; then
+	echo "enable-dht=${aria2EnableDht}" >> /conf/aria2.conf
+fi
+if [ $aria2DhtListenPort ]; then
+	echo "dht-listen-port=${aria2DhtListenPort}" >> /conf/aria2.conf
+fi
 
 # Extra aria2 option file
 if [ ! -f /conf/aria2_ext.conf ]; then
