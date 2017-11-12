@@ -106,7 +106,9 @@ cat /conf/aria2.conf
 if [ $aria2Secret ]; then
     export aria2webuiPlaceholderToken = "// token: '$YOUR_SECRET_TOKEN$'"
     export aria2webuiToken = "token: ${aria2Secret}"
-    sed -i -e 's/${aria2webuiPlaceholderToken}/${aria2webuiToken}/g' /aria2-webui/configuration.js
+    echo ${aria2webuiPlaceholderToken}
+    echo ${aria2webuiToken}
+    #sed -i -e 's/${aria2webuiPlaceholderToken}/${aria2webuiToken}/g' /aria2-webui/configuration.js
 fi
 
 echo "/aria2-webui/configuration.js"
