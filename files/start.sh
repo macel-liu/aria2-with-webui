@@ -105,10 +105,10 @@ cat /conf/aria2.conf
 # Change /aria2-webui/configuration.js
 #if [ $aria2Secret ]; then
 #    export aria2webuiPToken = "// token: \'\$YOUR_SECRET_TOKEN\$\'"
-    export aria2webuiToken = "token: ${aria2Secret}"
+#    export aria2webuiToken = "token: ${aria2Secret}"
 #    echo ${aria2webuiPlaceholderToken}
-    echo ${aria2webuiToken}
-    #sed -i -e 's/${aria2webuiPToken}/${aria2webuiToken}/g' /aria2-webui/configuration.js
+#    echo ${aria2webuiToken}
+#    sed -i -e 's/${aria2webuiPToken}/${aria2webuiToken}/g' /aria2-webui/configuration.js
 #fi
 
 #echo "/aria2-webui/configuration.js"
