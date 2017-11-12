@@ -103,16 +103,16 @@ fi
 cat /conf/aria2.conf
 
 # Change /aria2-webui/configuration.js
-if [ $aria2Secret ]; then
+#if [ $aria2Secret ]; then
     export aria2webuiPlaceholderToken = "// token: '$YOUR_SECRET_TOKEN$'"
     export aria2webuiToken = "token: ${aria2Secret}"
     echo ${aria2webuiPlaceholderToken}
     echo ${aria2webuiToken}
     #sed -i -e 's/${aria2webuiPlaceholderToken}/${aria2webuiToken}/g' /aria2-webui/configuration.js
-fi
+#fi
 
-echo "/aria2-webui/configuration.js"
-cat /aria2-webui/configuration.js
+#echo "/aria2-webui/configuration.js"
+#cat /aria2-webui/configuration.js
 
 # Start aria2 and aria2-webui
 darkhttpd /aria2-webui --port 80 &
